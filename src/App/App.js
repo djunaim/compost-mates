@@ -60,10 +60,9 @@ class App extends React.Component {
           <Switch>
             <PrivateRoute path="/" exact component={Home} authed={authed} />
             <PublicRoute path="/registration" exact component={Registration} authed={authed} />
-            {/* <PublicRoute path="/auth" exact component={MyNavbar} au thed={authed} /> */}
             <PrivateRoute path="/compost" exact component={MyCompost} authed={authed} />
-            <PrivateRoute path="/compost/:compostId/singlecompost" component={SingleCompost} authed={authed} />
             <PrivateRoute path="/compost/new" exact component={CompostForm} authed={authed} />
+            <PrivateRoute path="/compost/:compostId" exact component={SingleCompost} authed={authed} />
             <PrivateRoute path="/compost/:compostId/edit" exact component={EditCompost} authed={authed} />
           </Switch>
         </Router>
