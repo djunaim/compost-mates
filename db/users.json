@@ -1,0 +1,18 @@
+{
+  "user1": {
+    "firstName": "Jimmy",
+    "lastName": "G",
+    "email": "123@123.com",
+    "password": "password",
+    "location": "San Francisco",
+    "uid": "12345"
+  },
+  "user2": {
+    "firstName": "Monica",
+    "lastName": "D",
+    "email": "123@123.com",
+    "password": "password",
+    "location": "Nashville",
+    "uid": "TKqPPJe2B1dCFnM8evGB3CkQUx33"
+  }
+}

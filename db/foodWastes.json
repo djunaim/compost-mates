@@ -1,0 +1,65 @@
+{
+  "foodWaste1": {
+    "type": "fruit"
+  },
+  "foodWaste2": {
+    "type": "vegetables"
+  },
+  "foodWaste3": {
+    "type": "spices"
+  },
+  "foodWaste4": {
+    "type": "herbs"
+  },
+  "foodWaste5": {
+    "type": "coffee grounds"
+  },
+  "foodWaste6": {
+    "type": "coffee filter"
+  },
+  "foodWaste7": {
+    "type": "tea bags"
+  },
+  "foodWaste8": {
+    "type": "dairy product"
+  },
+  "foodWaste9": {
+    "type": "egg shells"
+  },
+  "foodWaste10": {
+    "type": "meat"
+  },
+  "foodWaste11": {
+    "type": "shellfish"
+  },
+  "foodWaste12": {
+    "type": "fish"
+  },
+  "foodWaste13": {
+    "type": "bones"
+  },
+  "foodWaste14": {
+    "type": "shells"
+  },
+  "foodWaste15": {
+    "type": "pasta"
+  },
+  "foodWaste16": {
+    "type": "breads"
+  },
+  "foodWaste17": {
+    "type": "cereals"
+  },
+  "foodWaste18": {
+    "type": "baked goods"
+  },
+  "foodWaste19": {
+    "type": "snack foods"
+  },
+  "foodWaste20": {
+    "type": "candy"
+  },
+  "foodWaste21": {
+    "type": "leftovers"
+  }
+}
