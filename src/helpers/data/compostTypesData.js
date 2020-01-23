@@ -19,4 +19,6 @@ const getAllCompostTypes = () => new Promise((resolve, reject) => {
 
 const getSingleCompostTypeByCompostId = (compostId) => axios.get(`${baseUrl}/compostTypes.json?orderBy="compostId"&equalTo="${compostId}"`);
 
-export default { getAllCompostTypes, getSingleCompostTypeByCompostId };
+const addCompostType = (compostTypeInfo) => axios.post(`${baseUrl}/compostTypes.json`, compostTypeInfo);
+
+export default { getAllCompostTypes, getSingleCompostTypeByCompostId, addCompostType };
