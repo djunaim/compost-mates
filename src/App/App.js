@@ -26,7 +26,7 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
 };
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/auth', state: { from: props.location } }} />);
+  const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/registration', state: { from: props.location } }} />);
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
@@ -56,7 +56,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <MyNavbar authed={authed} />
+          <MyNavbar path="/auth" authed={authed} />
           <Switch>
             <PrivateRoute path="/" exact component={Home} authed={authed} />
             <PublicRoute path="/registration" exact component={Registration} authed={authed} />

@@ -1,0 +1,74 @@
+{
+  "compost1": {
+    "userId": "user1",
+    "amountOfCompost": 1.2,
+    "name": "First Week",
+    "uid": "12345"
+  },
+  "compost2": {
+    "userId": "user1",
+    "amountOfCompost": 1.4,
+    "name": "Second Week",
+    "uid": "12345"
+  },
+  "compost3": {
+    "userId": "user1",
+    "amountOfCompost": 2,
+    "name": "Third Week",
+    "uid": "12345"
+  },
+  "compost4": {
+    "userId": "user1",
+    "amountOfCompost": 1.6,
+    "name": "Fourth Week",
+    "uid": "12345"
+  },
+  "compost5": {
+    "userId": "user2",
+    "amountOfCompost": 1,
+    "name": "First Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  },
+  "compost6": {
+    "userId": "user2",
+    "amountOfCompost": 1.5,
+    "name": "Second Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  },
+  "compost7": {
+    "userId": "user2",
+    "amountOfCompost": 2.5,
+    "name": "Third Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  },
+  "compost8": {
+    "userId": "user2",
+    "amountOfCompost": 2,
+    "name": "Fourth Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  },
+  "compost9": {
+    "userId": "user2",
+    "amountOfCompost": 1.2,
+    "name": "Fifth Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  },
+  "compost10": {
+    "userId": "user2",
+    "amountOfCompost": 2,
+    "name": "Sixth Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  },
+  "compost11": {
+    "userId": "user2",
+    "amountOfCompost": 3,
+    "name": "Seventh Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  },
+  "compost12": {
+    "userId": "user2",
+    "amountOfCompost": 1,
+    "name": "Eighth Compost",
+    "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
+  }
+}

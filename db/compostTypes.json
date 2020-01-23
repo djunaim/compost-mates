@@ -1,0 +1,122 @@
+{
+  "compostTypes1": {
+    "foodWasteId": "foodWaste1",
+    "compostId": "compost1"
+  },
+  "compostTypes2": {
+    "foodWasteId": "foodWaste15",
+    "compostId": "compost1"
+  },
+  "compostTypes3": {
+    "foodWasteId": "foodWaste3",
+    "compostId": "compost1"
+  },
+  "compostTypes4": {
+    "foodWasteId": "foodWaste13",
+    "compostId": "compost2"
+  },
+  "compostTypes5": {
+    "foodWasteId": "foodWaste8",
+    "compostId": "compost2"
+  },
+  "compostTypes6": {
+    "foodWasteId": "foodWaste16",
+    "compostId": "compost2"
+  },
+  "compostTypes7": {
+    "foodWasteId": "foodWaste5",
+    "compostId": "compost3"
+  },
+  "compostTypes8": {
+    "foodWasteId": "foodWaste14",
+    "compostId": "compost4"
+  },
+  "compostTypes9": {
+    "foodWasteId": "foodWaste20",
+    "compostId": "compost4"
+  },
+  "compostTypes10": {
+    "foodWasteId": "foodWaste15",
+    "compostId": "compost4"
+  },
+  "compostTypes11": {
+    "foodWasteId": "foodWaste16",
+    "compostId": "compost4"
+  },
+  "compostTypes12": {
+    "foodWasteId": "foodWaste6",
+    "compostId": "compost5"
+  },
+  "compostTypes13": {
+    "foodWasteId": "foodWaste8",
+    "compostId": "compost5"
+  },
+  "compostTypes14": {
+    "foodWasteId": "foodWaste4",
+    "compostId": "compost5"
+  },
+  "compostTypes15": {
+    "foodWasteId": "foodWaste10",
+    "compostId": "compost6"
+  },
+  "compostTypes16": {
+    "foodWasteId": "foodWaste2",
+    "compostId": "compost6"
+  },
+  "compostTypes17": {
+    "foodWasteId": "foodWaste4",
+    "compostId": "compost6"
+  },
+  "compostTypes18": {
+    "foodWasteId": "foodWaste8",
+    "compostId": "compost7"
+  },
+  "compostTypes19": {
+    "foodWasteId": "foodWaste19",
+    "compostId": "compost7"
+  },
+  "compostTypes20": {
+    "foodWasteId": "foodWaste20",
+    "compostId": "compost8"
+  },
+  "compostTypes21": {
+    "foodWasteId": "foodWaste21",
+    "compostId": "compost9"
+  },
+  "compostTypes22": {
+    "foodWasteId": "foodWaste3",
+    "compostId": "compost10"
+  },
+  "compostTypes23": {
+    "foodWasteId": "foodWaste5",
+    "compostId": "compost10"
+  },
+  "compostTypes24": {
+    "foodWasteId": "foodWaste9",
+    "compostId": "compost10"
+  },
+  "compostTypes25": {
+    "foodWasteId": "foodWaste11",
+    "compostId": "compost10"
+  },
+  "compostTypes26": {
+    "foodWasteId": "foodWaste16",
+    "compostId": "compost11"
+  },
+  "compostTypes27": {
+    "foodWasteId": "foodWaste19",
+    "compostId": "compost11"
+  },
+  "compostTypes28": {
+    "foodWasteId": "foodWaste2",
+    "compostId": "compost12"
+  },
+  "compostTypes29": {
+    "foodWasteId": "foodWaste5",
+    "compostId": "compost12"
+  },
+  "compostTypes30": {
+    "foodWasteId": "foodWaste6",
+    "compostId": "compost12"
+  }
+}
