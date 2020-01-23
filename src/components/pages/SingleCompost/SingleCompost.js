@@ -1,25 +1,31 @@
 import React from 'react';
 import compostTypesData from '../../../helpers/data/compostTypesData';
 import foodWastesData from '../../../helpers/data/foodWastesData';
+import compostsData from '../../../helpers/data/compostsData';
 
+import './SingleCompost.scss';
 
 class SingleCompost extends React.Component {
   state = {
     compostType: [],
     foodWaste: [],
     compostTypesWithFoodWasteNames: [],
+    compost: {},
   }
 
   componentDidMount() {
     const { compostId } = this.props.match.params;
+    this.getSingleCompostTypeWithFoodWasteNames(compostId);
+    this.getSingleCompostData(compostId);
+  }
+
+  getSingleCompostTypeWithFoodWasteNames = (compostId) => {
     compostTypesData.getSingleCompostTypeByCompostId(compostId)
       .then((response) => {
         const newCompostType = Object.keys(response.data).map((i) => response.data[i]);
         this.setState({ compostType: newCompostType });
-        console.log(newCompostType);
         foodWastesData.getAllFoodWastes()
           .then((result) => {
-            console.log(result);
             this.setState({ foodWaste: result });
             this.state.foodWaste.forEach((foodWaste) => {
               this.state.compostType.forEach((ct) => {
@@ -29,31 +35,39 @@ class SingleCompost extends React.Component {
                   this.setState({ compostTypesWithFoodWasteNames: newCompostTypesWithFoodWasteNames });
                 }
               });
-              // if (foodWaste.id === this.state.compostType.forEach()) {
-              //   compostTypesWithFoodWasteNames.foodType = foodWaste.type;
-              //   console.log(compostTypesWithFoodWasteNames.foodType);
-              //   compostTypesWithFoodWasteNames.push(compostTypesWithFoodWasteNames.foodType);
-              // }
             });
           });
       })
       .catch((errFromSingleCompost) => console.error(errFromSingleCompost));
   }
-  // get all food wastes. Make an array for all the different compost types. Do a find to compare the 2 arrays to each other. Do object.keys to make an array of compost types. Then map over it and print
+
+  getSingleCompostData = (compostId) => {
+    compostsData.getSingleCompost(compostId)
+      .then((response) => {
+        this.setState({ compost: response.data });
+      })
+      .catch((errFromSingleCompostData) => console.error(errFromSingleCompostData));
+  }
 
   render() {
-    const { compostType, compostTypesWithFoodWasteNames } = this.state;
-
-    // const findFoodWasteNames = () => {
-    //   const getFoodWasteNames = compostType.find((x) => x.foodWasteId === foodWaste.id);
-    //   return console.log(`${getFoodWasteNames.type}`);
-    // };
+    const { compostTypesWithFoodWasteNames, compost } = this.state;
 
     return (
       <div className="SingleCompost">
-         <h1>Single Compost</h1>
-         { compostTypesWithFoodWasteNames.map((compostTypesWithFoodWasteName) => <p>{compostTypesWithFoodWasteName}</p>)}
-        <h4>{compostType.compostId}</h4>
+        <h2>{compost.name}</h2>
+        <div className="card singleCompostInfo">
+          <div className="card-body">
+            <div className="card-title">
+              <h6 className="card-text">Food Waste:</h6>
+              {
+                compostTypesWithFoodWasteNames.map((compostTypesWithFoodWasteName) => <p className="card-text" key={compostTypesWithFoodWasteName}>
+                {`${compostTypesWithFoodWasteName}`}</p>)
+              }
+            </div>
+            <h6 className="card-text">Amount of Compost (lb):</h6>
+            <p className="card-text"> {compost.amountOfCompost}</p>
+          </div>
+        </div>
       </div>
     );
   }
