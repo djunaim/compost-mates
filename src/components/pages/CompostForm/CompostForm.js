@@ -65,14 +65,13 @@ class CompostForm extends React.Component {
 
   handleCheckEvent = (e) => {
     e.preventDefault();
-    const foodWastesCheckboxes = this.state;
+    const { foodWastesCheckboxes } = this.state;
     foodWastesCheckboxes.forEach((foodWastesCheckbox) => {
-      if (foodWastesCheckbox.value === e.target.value) {
-        // eslint-disable-next-line no-param-reassign
-        foodWastesCheckbox.isChecked = e.target.checked;
+      if (foodWastesCheckbox.id === e.target.value) {
+        console.log(e.target.value);
+        // this.setState({ foodWasteSelection: e.target.value });
       }
     });
-    this.setState({ foodWastesCheckboxes });
   }
 
   nameChange = (e) => {
@@ -134,14 +133,10 @@ class CompostForm extends React.Component {
             onChange={this.amountChange}
           />
         </div>
-        <div className="form-check"
-            id="foodWaste"
-            value={foodWastesCheckboxes}
-            onChange={this.handleCheckEvent}
-            >
-              {
-              foodWastesCheckboxes.map((foodWastesCheckbox) => <Checkboxes key={foodWastesCheckbox.id} foodWastesCheckbox={foodWastesCheckbox} handleCheckEvent={this.handleCheckEvent} />)
-              }
+        <div className="form-check" id="foodWaste" >
+          {
+            foodWastesCheckboxes.map((foodWastesCheckbox) => <Checkboxes key={foodWastesCheckbox.id} foodWastesCheckbox={foodWastesCheckbox} handleCheckEvent={this.handleCheckEvent} />)
+          }
         </div>
         <button className="btn btn-success" onClick={this.saveCompostEvent}>Save Compost</button>
       </form>

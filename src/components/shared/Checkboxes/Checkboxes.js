@@ -8,17 +8,18 @@ class Checkboxes extends React.Component {
     handleCheckEvent: PropTypes.func,
   }
 
-  useHandleCheckEvent = (e) => {
-    e.preventDefault();
-    const { foodWastesCheckbox, handleCheckEvent } = this.props;
-    handleCheckEvent(foodWastesCheckbox);
-  }
-
   render() {
-    const { foodWastesCheckbox } = this.props;
+    const { foodWastesCheckbox, handleCheckEvent } = this.props;
     return (
       <div>
-        <input key={foodWastesCheckbox.id} onChange={this.useHandleCheckEvent} type="checkbox" checked={foodWastesCheckbox.isChecked} value={foodWastesCheckbox.type} /> {foodWastesCheckbox.type}
+        <input
+        name="foodWaste"
+        key={foodWastesCheckbox.id}
+        onChange={handleCheckEvent}
+        type="checkbox"
+        checked={foodWastesCheckbox.isChecked}
+        value={foodWastesCheckbox.id}
+        /> {foodWastesCheckbox.type}
      </div>
     );
   }
