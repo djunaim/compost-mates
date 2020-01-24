@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import foodWastesData from '../../../helpers/data/foodWastesData';
+import authData from '../../../helpers/data/authData';
+import compostsData from '../../../helpers/data/compostsData';
+import compostShape from '../../../helpers/propz/compostShape';
 
 class CompostForm extends React.Component {
   state = {
@@ -7,10 +11,16 @@ class CompostForm extends React.Component {
     compostAmount: '',
     foodWastes: [],
     foodWasteSelection: '',
+    composts: [],
+  }
+
+  static propTypes = {
+    compost: PropTypes.arrayOf(compostShape.compostShape),
   }
 
   componentDidMount() {
     this.getfoodWastesData();
+    this.getCompostsData();
   }
 
   getfoodWastesData = () => {
@@ -19,6 +29,48 @@ class CompostForm extends React.Component {
         this.setState({ foodWastes: result });
       })
       .catch((errFromFoodWaste) => console.error(errFromFoodWaste));
+  }
+
+  getCompostsData = () => {
+    const uid = authData.getUid();
+    compostsData.getCompostsByUid(uid)
+      .then((composts) => {
+        this.setState({ composts });
+      })
+      .catch((errFromCompostsData) => console.error(errFromCompostsData));
+  }
+
+  foodWasteChange = (e) => {
+    e.preventDefault();
+    this.setState({ foodWasteSelection: e.target.value });
+  }
+
+  nameChange = (e) => {
+    e.preventDefault();
+    this.setState({ compostName: e.target.value });
+  }
+
+  amountChange = (e) => {
+    e.preventDefault();
+    this.setState({ compostAmount: e.target.value });
+  }
+
+  // make object of compost in post, grab id in then(), find things that are checked and then do post on compostTypes
+  saveCompostEvent = (e) => {
+    e.preventDefault();
+    const { userId } = this.state.composts[0];
+    const newCompost = {
+      userId,
+      amountOfCompost: this.state.compostAmount,
+      name: this.state.compostName,
+      uid: authData.getUid(),
+    };
+    compostsData.addCompost(newCompost)
+      .then((response) => {
+        const compostId = response.data.name;
+        console.log('compost id', compostId);
+      })
+      .catch((errFromSaveCompostEvent) => console.error(errFromSaveCompostEvent));
   }
 
   render() {
@@ -52,23 +104,19 @@ class CompostForm extends React.Component {
             onChange={this.amountChange}
           />
         </div>
-        <div className="form-check"
-            id="employeeName"
-            value={ foodWasteSelection }
-            onChange={() => {}}>
+        {/* <div className="form-check"
+            id="foodWaste"
+            value={foodWasteSelection}
+            onChange={this.foodWasteChange}>
             {
               foodWastes.map((foodWaste) => (
-                <input className="form-check-input" type="checkbox" key={foodWaste.id} id={foodWaste.id} />
+                <div key={foodWaste.id} className="checkbox">
+                  <label htmlFor="foodWaste"><input className="form-check-input" type="checkbox" value={foodWaste.id} />{foodWaste.type}</label>
+                </div>
               ))
             }
-            {
-              foodWastes.map((foodWaste) => (
-                <label className="form-check-label" key={foodWaste.id} htmlFor={foodWaste.id}>
-                  {foodWaste.type}
-                </label>
-              ))
-            }
-        </div>
+        </div> */}
+        <button className="btn btn-success" onClick={this.saveCompostEvent}>Save Compost</button>
       </form>
     );
   }
