@@ -4,12 +4,35 @@ import foodWastesData from '../../../helpers/data/foodWastesData';
 import authData from '../../../helpers/data/authData';
 import compostsData from '../../../helpers/data/compostsData';
 import compostShape from '../../../helpers/propz/compostShape';
+import Checkboxes from '../../shared/Checkboxes/Checkboxes';
 
 class CompostForm extends React.Component {
   state = {
     compostName: '',
     compostAmount: '',
-    foodWastes: [],
+    foodWastesCheckboxes: [
+      { id: 'foodWaste1', type: 'fruit', isChecked: false },
+      { id: 'foodWaste2', type: 'vegetables', isChecked: false },
+      { id: 'foodWaste3', type: 'spices', isChecked: false },
+      { id: 'foodWaste4', type: 'herbs', isChecked: false },
+      { id: 'foodWaste5', type: 'coffee grounds', isChecked: false },
+      { id: 'foodWaste6', type: 'coffee filter', isChecked: false },
+      { id: 'foodWaste7', type: 'tea bags', isChecked: false },
+      { id: 'foodWaste8', type: 'dairy product', isChecked: false },
+      { id: 'foodWaste9', type: 'egg shells', isChecked: false },
+      { id: 'foodWaste10', type: 'meat', isChecked: false },
+      { id: 'foodWaste11', type: 'shellfish', isChecked: false },
+      { id: 'foodWaste12', type: 'fish', isChecked: false },
+      { id: 'foodWaste13', type: 'bones', isChecked: false },
+      { id: 'foodWaste14', type: 'shells', isChecked: false },
+      { id: 'foodWaste15', type: 'pasta', isChecked: false },
+      { id: 'foodWaste16', type: 'breads', isChecked: false },
+      { id: 'foodWaste17', type: 'cereals', isChecked: false },
+      { id: 'foodWaste18', type: 'baked goods', isChecked: false },
+      { id: 'foodWaste19', type: 'snack foods', isChecked: false },
+      { id: 'foodWaste20', type: 'candy', isChecked: false },
+      { id: 'foodWaste21', type: 'leftovers', isChecked: false },
+    ],
     foodWasteSelection: '',
     composts: [],
   }
@@ -40,9 +63,16 @@ class CompostForm extends React.Component {
       .catch((errFromCompostsData) => console.error(errFromCompostsData));
   }
 
-  foodWasteChange = (e) => {
+  handleCheckEvent = (e) => {
     e.preventDefault();
-    this.setState({ foodWasteSelection: e.target.value });
+    const foodWastesCheckboxes = this.state;
+    foodWastesCheckboxes.forEach((foodWastesCheckbox) => {
+      if (foodWastesCheckbox.value === e.target.value) {
+        // eslint-disable-next-line no-param-reassign
+        foodWastesCheckbox.isChecked = e.target.checked;
+      }
+    });
+    this.setState({ foodWastesCheckboxes });
   }
 
   nameChange = (e) => {
@@ -55,7 +85,7 @@ class CompostForm extends React.Component {
     this.setState({ compostAmount: e.target.value });
   }
 
-  // make object of compost in post, grab id in then(), find things that are checked and then do post on compostTypes
+  // make object of compost in post, grab id in then(), find things that are checked, create new compost types object, and then post on compostTypes
   saveCompostEvent = (e) => {
     e.preventDefault();
     const { userId } = this.state.composts[0];
@@ -77,7 +107,7 @@ class CompostForm extends React.Component {
     const {
       compostAmount,
       compostName,
-      foodWastes,
+      foodWastesCheckboxes,
       foodWasteSelection,
     } = this.state;
     return (
@@ -104,18 +134,15 @@ class CompostForm extends React.Component {
             onChange={this.amountChange}
           />
         </div>
-        {/* <div className="form-check"
+        <div className="form-check"
             id="foodWaste"
-            value={foodWasteSelection}
-            onChange={this.foodWasteChange}>
-            {
-              foodWastes.map((foodWaste) => (
-                <div key={foodWaste.id} className="checkbox">
-                  <label htmlFor="foodWaste"><input className="form-check-input" type="checkbox" value={foodWaste.id} />{foodWaste.type}</label>
-                </div>
-              ))
-            }
-        </div> */}
+            value={foodWastesCheckboxes}
+            onChange={this.handleCheckEvent}
+            >
+              {
+              foodWastesCheckboxes.map((foodWastesCheckbox) => <Checkboxes key={foodWastesCheckbox.id} foodWastesCheckbox={foodWastesCheckbox} handleCheckEvent={this.handleCheckEvent} />)
+              }
+        </div>
         <button className="btn btn-success" onClick={this.saveCompostEvent}>Save Compost</button>
       </form>
     );
