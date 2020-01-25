@@ -4,22 +4,19 @@ import foodWastesCheckboxShape from '../../../helpers/propz/foodWastesCheckboxSh
 
 class Checkboxes extends React.Component {
   static propTypes = {
-    foodWastesCheckbox: PropTypes.objectOf(foodWastesCheckboxShape.foodWastesCheckboxShape),
+    foodWastesCheckbox: foodWastesCheckboxShape.foodWastesCheckboxShape,
     handleCheckEvent: PropTypes.func,
   }
 
   render() {
     const { foodWastesCheckbox, handleCheckEvent } = this.props;
+
     return (
       <div className="Checkboxes">
-        <input
-        id={foodWastesCheckbox.id}
-        // key={foodWastesCheckbox.id}
-        onChange={handleCheckEvent}
-        type="checkbox"
-        checked={foodWastesCheckbox.isChecked}
-        value={foodWastesCheckbox.id}
-        /> {foodWastesCheckbox.type}
+          <input className="form-check-input" type="checkbox" value={foodWastesCheckbox.id} id={foodWastesCheckbox.id} onChange={handleCheckEvent} checked={foodWastesCheckbox.isChecked}/>
+          <label className="form-check-label" htmlFor="defaultCheck1">
+          {foodWastesCheckbox.type}
+          </label>
      </div>
     );
   }

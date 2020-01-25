@@ -11,31 +11,8 @@ class CompostForm extends React.Component {
   state = {
     compostName: '',
     compostAmount: '',
-    foodWastesCheckboxes: [
-      // { id: 'foodWaste1', type: 'fruit', isChecked: false },
-      // { id: 'foodWaste2', type: 'vegetables', isChecked: false },
-      // { id: 'foodWaste3', type: 'spices', isChecked: false },
-      // { id: 'foodWaste4', type: 'herbs', isChecked: false },
-      // { id: 'foodWaste5', type: 'coffee grounds', isChecked: false },
-      // { id: 'foodWaste6', type: 'coffee filter', isChecked: false },
-      // { id: 'foodWaste7', type: 'tea bags', isChecked: false },
-      // { id: 'foodWaste8', type: 'dairy product', isChecked: false },
-      // { id: 'foodWaste9', type: 'egg shells', isChecked: false },
-      // { id: 'foodWaste10', type: 'meat', isChecked: false },
-      // { id: 'foodWaste11', type: 'shellfish', isChecked: false },
-      // { id: 'foodWaste12', type: 'fish', isChecked: false },
-      // { id: 'foodWaste13', type: 'bones', isChecked: false },
-      // { id: 'foodWaste14', type: 'shells', isChecked: false },
-      // { id: 'foodWaste15', type: 'pasta', isChecked: false },
-      // { id: 'foodWaste16', type: 'breads', isChecked: false },
-      // { id: 'foodWaste17', type: 'cereals', isChecked: false },
-      // { id: 'foodWaste18', type: 'baked goods', isChecked: false },
-      // { id: 'foodWaste19', type: 'snack foods', isChecked: false },
-      // { id: 'foodWaste20', type: 'candy', isChecked: false },
-      // { id: 'foodWaste21', type: 'leftovers', isChecked: false },
-    ],
+    foodWastesCheckboxes: [],
     composts: [],
-    foodWasteIds: [],
   }
 
   static propTypes = {
@@ -55,7 +32,6 @@ class CompostForm extends React.Component {
         Object.keys(foodWastesArr).forEach((fbId) => {
           foodWastesArr[fbId].isChecked = false;
           foodWastes.push(foodWastesArr[fbId]);
-          console.log('foodWastesCheckboxes', foodWastes);
         });
         this.setState({ foodWastesCheckboxes: foodWastes });
       })
@@ -72,18 +48,11 @@ class CompostForm extends React.Component {
   }
 
   handleCheckEvent = (e) => {
-    e.preventDefault();
     const { foodWastesCheckboxes } = this.state;
-    const checkedFoodTypeArr = [];
-    foodWastesCheckboxes.forEach((foodWastesCheckbox) => {
-      if (foodWastesCheckbox.id === e.target.value) {
-        // eslint-disable-next-line no-param-reassign
-        foodWastesCheckboxes.id = e.target.value;
-        checkedFoodTypeArr.push(foodWastesCheckboxes.id);
-      }
-      console.log('checked food types arr', checkedFoodTypeArr);
-      this.setState({ foodWasteIds: checkedFoodTypeArr });
-    });
+    const newFoodWastesCheckboxes = [...foodWastesCheckboxes];
+    const foodWasteIndex = foodWastesCheckboxes.findIndex((x) => x.id === e.target.id);
+    newFoodWastesCheckboxes[foodWasteIndex].isChecked = e.target.checked;
+    this.setState({ foodWastesCheckboxes });
   }
 
   nameChange = (e) => {
@@ -100,6 +69,7 @@ class CompostForm extends React.Component {
   saveCompostEvent = (e) => {
     e.preventDefault();
     const { userId } = this.state.composts[0];
+    const { foodWastesCheckboxes } = this.state;
     const newCompost = {
       userId,
       amountOfCompost: this.state.compostAmount,
@@ -110,10 +80,11 @@ class CompostForm extends React.Component {
       .then((response) => {
         const compostId = response.data.name;
         console.log('compost id', compostId);
-        const { foodWasteIds } = this.state;
-        foodWasteIds.forEach((foodWasteId) => {
+        const selectedFoods = foodWastesCheckboxes.filter((x) => x.isChecked);
+        console.log('selected food', selectedFoods);
+        selectedFoods.forEach((selectedFood) => {
           const newCompostType = {
-            foodWasteId,
+            foodWasteId: selectedFood.id,
             compostId,
           };
           compostTypesData.addCompostType(newCompostType)
