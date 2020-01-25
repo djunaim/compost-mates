@@ -65,7 +65,6 @@ class CompostForm extends React.Component {
     this.setState({ compostAmount: e.target.value });
   }
 
-  // make object of compost in post, grab id in then(), find things that are checked, create new compost types object, and then post on compostTypes
   saveCompostEvent = (e) => {
     e.preventDefault();
     const { userId } = this.state.composts[0];
@@ -79,9 +78,7 @@ class CompostForm extends React.Component {
     compostsData.addCompost(newCompost)
       .then((response) => {
         const compostId = response.data.name;
-        console.log('compost id', compostId);
         const selectedFoods = foodWastesCheckboxes.filter((x) => x.isChecked);
-        console.log('selected food', selectedFoods);
         selectedFoods.forEach((selectedFood) => {
           const newCompostType = {
             foodWasteId: selectedFood.id,
