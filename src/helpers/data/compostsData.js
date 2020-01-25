@@ -22,4 +22,10 @@ const getCompostsByUid = (uid) => new Promise((resolve, reject) => {
 
 const getSingleCompost = (compostId) => axios.get(`${baseUrl}/composts/${compostId}.json`);
 
-export default { getCompostsByUid, getSingleCompost };
+const addCompost = (compostInfo) => axios.post(`${baseUrl}/composts.json`, compostInfo);
+
+export default {
+  getCompostsByUid,
+  getSingleCompost,
+  addCompost,
+};
