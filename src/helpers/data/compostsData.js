@@ -26,9 +26,12 @@ const addCompost = (compostInfo) => axios.post(`${baseUrl}/composts.json`, compo
 
 const deleteCompost = (compostId) => axios.delete(`${baseUrl}/composts/${compostId}.json`);
 
+const updateCompost = (compostId, newCompostObj) => axios.put(`${baseUrl}/composts/${compostId}.json`, newCompostObj);
+
 export default {
   getCompostsByUid,
   getSingleCompost,
   addCompost,
   deleteCompost,
+  updateCompost,
 };
