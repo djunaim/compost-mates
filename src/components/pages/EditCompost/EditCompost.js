@@ -38,7 +38,6 @@ class EditCompost extends React.Component {
               newCompostTypesArr.push(compostTypeObj[fbId]);
             });
             this.setState({ compostTypesArr: newCompostTypesArr });
-            console.log('compost type arr', this.state.compostTypesArr);
             this.getfoodWastesData(result.data);
           });
         })
@@ -51,21 +50,15 @@ class EditCompost extends React.Component {
       .then((result) => {
         const foodWastesArr = result;
         const foodWastes = [];
-        // const { foodWastesCheckboxes } = this.state;
         const newFoodWastes = [];
         Object.keys(foodWastesObj).forEach((fbId) => {
           // eslint-disable-next-line no-param-reassign
           foodWastesObj[fbId].id = fbId;
           newFoodWastes.push(foodWastesObj[fbId]);
         });
-        // console.log('new array', newFoodWastes);
         this.setState({ foodWastesCheckboxes: foodWastesArr });
-        // console.log('food waste arr', foodWastesArr);
         Object.keys(this.state.foodWastesCheckboxes).forEach((fbId) => {
-          // console.log('fbId', fbId);
-          // console.log('food waste checkboxes', this.state.foodWastesCheckboxes);
           const foodWasteIndex = newFoodWastes.findIndex((x) => x.foodWasteId === this.state.foodWastesCheckboxes[fbId].id);
-          // console.log('food waste index', foodWasteIndex);
           if (foodWasteIndex !== -1) {
             this.state.foodWastesCheckboxes[fbId].isChecked = true;
           } else {
@@ -118,10 +111,8 @@ class EditCompost extends React.Component {
     };
     compostsData.updateCompost(compostId, updatedCompost)
       .then((response) => {
-        console.log('response', response);
         const selectedFoods = foodWastesCheckboxes.filter((x) => x.isChecked);
         const notSelectedFoods = foodWastesCheckboxes.filter((x) => !x.isChecked);
-        console.log('selected foods', selectedFoods);
         selectedFoods.forEach((selectedFood) => {
           if (compostTypesArr.find((c) => c.foodWasteId === selectedFood.id) === undefined) {
             // have array compostTypesArr. compostTypesArr.find((c) => c.foodWasteId === selectedFood.id)
