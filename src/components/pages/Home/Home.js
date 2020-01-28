@@ -2,9 +2,27 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 import './Home.scss';
+import foodWastesData from '../../../helpers/data/foodWastesData';
 
 class Home extends React.Component {
+  state = {
+    foodWastes: [],
+  }
+
+  componentDidMount() {
+    this.getFoodWastesData();
+  }
+
+  getFoodWastesData = () => {
+    foodWastesData.getAllFoodWastes()
+      .then((result) => {
+        this.setState({ foodWastes: result });
+      })
+      .catch((errFromFoodWaste) => console.error(errFromFoodWaste));
+  }
+
   render() {
+    const { foodWastes } = this.state;
     return (
       <div className="Home">
         {/* <div className="parallax"></div> */}
@@ -34,7 +52,15 @@ class Home extends React.Component {
           </Carousel>
         </div>
         {/* <div className="parallax"></div> */}
-        <div className="toCompost">To Compost</div>
+        <div className="toCompost">
+          <h3>To Compost</h3>
+          <img class="compostImage" src="https://images.unsplash.com/photo-1485277068030-a29993c5d5f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=2104&q=80" alt="dirt"/>
+          <div className="overlayCompost">
+            {
+              foodWastes.map((foodWaste) => <p key={foodWaste.id}>{foodWaste.type}</p>)
+            }
+          </div>
+        </div>
         <div className="parallax"></div>
         <div className="notCompost">Not Compost</div>
         <div className="parallax"></div>
