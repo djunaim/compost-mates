@@ -15,6 +15,7 @@ class EditCompost extends React.Component {
     compostAmount: '',
     foodWastesCheckboxes: [],
     composts: [],
+    compostTypesArr: [],
   }
 
   static propTypes = {
@@ -22,18 +23,55 @@ class EditCompost extends React.Component {
   }
 
   componentDidMount() {
-    this.getfoodWastesData();
     this.getCompostsData();
+    const { compostId } = this.props.match.params;
+    if (compostId) {
+      compostsData.getSingleCompost(compostId)
+        .then((response) => {
+          this.setState({ compostName: response.data.name, compostAmount: response.data.amountOfCompost });
+          compostTypesData.getSingleCompostTypeByCompostId(compostId).then((result) => {
+            // this.setState({ compostTypeIds: result.data });
+            const compostTypeObj = result.data;
+            const newCompostTypesArr = [];
+            Object.keys(compostTypeObj).forEach((fbId) => {
+              compostTypeObj[fbId].id = fbId;
+              newCompostTypesArr.push(compostTypeObj[fbId]);
+            });
+            this.setState({ compostTypesArr: newCompostTypesArr });
+            console.log('compost type arr', this.state.compostTypesArr);
+            this.getfoodWastesData(result.data);
+          });
+        })
+        .catch((errFromSingleEditCompost) => console.error(errFromSingleEditCompost));
+    }
   }
 
-  getfoodWastesData = () => {
+  getfoodWastesData = (foodWastesObj) => {
     foodWastesData.getAllFoodWastes()
       .then((result) => {
         const foodWastesArr = result;
         const foodWastes = [];
-        Object.keys(foodWastesArr).forEach((fbId) => {
-          foodWastesArr[fbId].isChecked = false;
-          foodWastes.push(foodWastesArr[fbId]);
+        // const { foodWastesCheckboxes } = this.state;
+        const newFoodWastes = [];
+        Object.keys(foodWastesObj).forEach((fbId) => {
+          // eslint-disable-next-line no-param-reassign
+          foodWastesObj[fbId].id = fbId;
+          newFoodWastes.push(foodWastesObj[fbId]);
+        });
+        // console.log('new array', newFoodWastes);
+        this.setState({ foodWastesCheckboxes: foodWastesArr });
+        // console.log('food waste arr', foodWastesArr);
+        Object.keys(this.state.foodWastesCheckboxes).forEach((fbId) => {
+          // console.log('fbId', fbId);
+          // console.log('food waste checkboxes', this.state.foodWastesCheckboxes);
+          const foodWasteIndex = newFoodWastes.findIndex((x) => x.foodWasteId === this.state.foodWastesCheckboxes[fbId].id);
+          // console.log('food waste index', foodWasteIndex);
+          if (foodWasteIndex !== -1) {
+            this.state.foodWastesCheckboxes[fbId].isChecked = true;
+          } else {
+            this.state.foodWastesCheckboxes[fbId].isChecked = false;
+          }
+          foodWastes.push(this.state.foodWastesCheckboxes[fbId]);
         });
         this.setState({ foodWastesCheckboxes: foodWastes });
       })
@@ -67,28 +105,39 @@ class EditCompost extends React.Component {
     this.setState({ compostAmount: e.target.value });
   }
 
-  saveCompostEvent = (e) => {
+  updateCompostEvent = (e) => {
     e.preventDefault();
     const { userId } = this.state.composts[0];
-    const { foodWastesCheckboxes } = this.state;
-    const newCompost = {
+    const { foodWastesCheckboxes, compostTypesArr } = this.state;
+    const { compostId } = this.props.match.params;
+    const updatedCompost = {
       userId,
       amountOfCompost: this.state.compostAmount,
       name: this.state.compostName,
       uid: authData.getUid(),
     };
-    compostsData.addCompost(newCompost)
+    compostsData.updateCompost(compostId, updatedCompost)
       .then((response) => {
-        const compostId = response.data.name;
+        console.log('response', response);
         const selectedFoods = foodWastesCheckboxes.filter((x) => x.isChecked);
+        const notSelectedFoods = foodWastesCheckboxes.filter((x) => !x.isChecked);
+        console.log('selected foods', selectedFoods);
         selectedFoods.forEach((selectedFood) => {
-          const newCompostType = {
-            foodWasteId: selectedFood.id,
-            compostId,
-          };
-          compostTypesData.addCompostType(newCompostType)
-            .then(() => this.props.history.push('/compost'));
+          if (compostTypesArr.find((c) => c.foodWasteId === selectedFood.id) === undefined) {
+            // have array compostTypesArr. compostTypesArr.find((c) => c.foodWasteId === selectedFood.id)
+            const newCompostType = {
+              foodWasteId: selectedFood.id,
+              compostId,
+            };
+            compostTypesData.addCompostType(newCompostType);
+          }
         });
+        compostTypesArr.forEach((compostTypeArr) => {
+          if (notSelectedFoods.find((notSelectedFood) => notSelectedFood.id === compostTypeArr.foodWasteId) !== undefined) {
+            compostTypesData.deleteCompostTypes(compostTypeArr.id);
+          }
+        });
+        this.props.history.push('/compost');
       })
       .catch((errFromSaveCompostEvent) => console.error(errFromSaveCompostEvent));
   }
@@ -129,7 +178,7 @@ class EditCompost extends React.Component {
             foodWastesCheckboxes.map((foodWastesCheckbox) => <Checkboxes key={foodWastesCheckbox.id} foodWastesCheckbox={foodWastesCheckbox} handleCheckEvent={this.handleCheckEvent} />)
           }
         </div>
-        <button className="btn btn-success" onClick={this.saveCompostEvent}>Save Compost</button>
+        <button className="btn btn-success" onClick={this.updateCompostEvent}>Update Compost</button>
       </form>
     );
   }
