@@ -1,10 +1,10 @@
-// .Home {
-//   height: 100%;
+// .horizontalCompostMatesLogo img {
+//   opacity: 0.5;
 // }
 
 .parallax {
   background-image: url("https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80");
-  height: 90vh;
+  height: 50vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,8 +14,10 @@
 .toCompost,
 .notCompost {
   background-color: lightgray;
-  height: 10vh;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  height: 20vh;
+  opacity: 0.5;
 }
 
+.carousel-inner .item img {
+  width: 60vh;
+}
