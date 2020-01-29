@@ -22,7 +22,7 @@ class Compost extends React.Component {
         <div className="card border-dark mb-3">
           <div className="card-body">
           <button className="btn btn-danger" onClick={this.deleteCompostEvent}>x</button>
-            <h4>{compost.name}</h4>
+            <h4><strong>{compost.name}</strong></h4>
             <Link className="btn btn-primary" to={`/compost/${compost.id}`}>View</Link>
             <Link className="btn btn-secondary" to={`/compost/${compost.id}/edit`}>Edit</Link>
           </div>
