@@ -7,6 +7,8 @@ import compostShape from '../../../helpers/propz/compostShape';
 import Checkboxes from '../../shared/Checkboxes/Checkboxes';
 import compostTypesData from '../../../helpers/data/compostTypesData';
 
+import './CompostForm.scss';
+
 class CompostForm extends React.Component {
   state = {
     compostName: '',
@@ -99,35 +101,37 @@ class CompostForm extends React.Component {
     } = this.state;
     return (
       <form className="CompostForm">
-        <div className="form-group">
-          <label htmlFor="compost-name"><strong>Name</strong></label>
-          <input
-            input="text"
-            className="form-control"
-            id="compost-name"
-            placeholder="Name compost"
-            value={compostName}
-            onChange={this.nameChange}
-          />
+        <div className="container compostForm">
+          <div className="form-group">
+            <label htmlFor="compost-name"><strong>Name</strong></label>
+            <input
+              input="text"
+              className="form-control"
+              id="compost-name"
+              placeholder="Name compost"
+              value={compostName}
+              onChange={this.nameChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="compost-amount"><strong>Amount of Compost (lb)</strong></label>
+            <input
+              input="text"
+              className="form-control"
+              id="compost-amount"
+              placeholder="Enter amount"
+              value={compostAmount}
+              onChange={this.amountChange}
+            />
+          </div>
+          <div className="form-check" >
+            <label htmlFor="foodWaste"><strong>Food Waste Types</strong></label>
+            {
+              foodWastesCheckboxes.map((foodWastesCheckbox) => <Checkboxes key={foodWastesCheckbox.id} foodWastesCheckbox={foodWastesCheckbox} handleCheckEvent={this.handleCheckEvent} />)
+            }
+          </div>
+          <button className="btn btn-outline-dark saveButton" onClick={this.saveCompostEvent}>Save Compost</button>
         </div>
-        <div className="form-group">
-          <label htmlFor="compost-amount"><strong>Amount of Compost (lb)</strong></label>
-          <input
-            input="text"
-            className="form-control"
-            id="compost-amount"
-            placeholder="Enter amount"
-            value={compostAmount}
-            onChange={this.amountChange}
-          />
-        </div>
-        <div className="form-check" >
-          <label htmlFor="foodWaste"><strong>Food Waste Types</strong></label>
-          {
-            foodWastesCheckboxes.map((foodWastesCheckbox) => <Checkboxes key={foodWastesCheckbox.id} foodWastesCheckbox={foodWastesCheckbox} handleCheckEvent={this.handleCheckEvent} />)
-          }
-        </div>
-        <button className="btn btn-success" onClick={this.saveCompostEvent}>Save Compost</button>
       </form>
     );
   }
