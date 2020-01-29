@@ -4,6 +4,8 @@ import authData from '../../../helpers/data/authData';
 import compostsData from '../../../helpers/data/compostsData';
 import compostTypesData from '../../../helpers/data/compostTypesData';
 
+import './MyCompost.scss';
+
 class MyCompost extends React.Component {
   state = {
     composts: [],

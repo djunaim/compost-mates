@@ -1,0 +1,20 @@
+.CompostForm {
+  background: url("https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  .compostForm {
+    background-image: url("https://wallsev.com/wp-content/uploads/2014/01/crumpled-white_00247448.jpg");
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .form-group, 
+    .form-check {
+      color: #000000;
+    }
+    .saveButton {
+      margin-top: 12px;
+    }
+  }
+}

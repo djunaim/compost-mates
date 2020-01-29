@@ -1,5 +1,21 @@
+.SingleCompost {
+  background-image: url("https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  h2 {
+    color: #ffffff;
+  }
+}
+
 .singleCompostInfo {
+  background-image: url("https://lh4.googleusercontent.com/proxy/ZW_j_fyzhRtjvDHnwLQPGIxZMq8FQ7s5lB7z4Fi6qeN9mcqhmuyLhhaOgNpxkMQpzr32Wp0En5Ohx1_xac9au7VJpRsiJxvt7WqhAioymNZ7a953bzwjQ3H15jEil-0w8A");
+  border-radius: 0%;
+  box-shadow: 10px 10px 15px #000000;
   width: 18rem;
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
 }
