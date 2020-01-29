@@ -54,17 +54,17 @@ class SingleCompost extends React.Component {
 
     return (
       <div className="SingleCompost">
-        <h2>{compost.name}</h2>
+        <h2><strong>{compost.name}</strong></h2>
         <div className="card singleCompostInfo">
           <div className="card-body">
             <div className="card-title">
-              <h6 className="card-text">Food Waste:</h6>
+              <h6 className="card-text"><strong>Food Waste:</strong></h6>
               {
                 compostTypesWithFoodWasteNames.map((compostTypesWithFoodWasteName) => <p className="card-text" key={compostTypesWithFoodWasteName}>
                 {`${compostTypesWithFoodWasteName}`}</p>)
               }
             </div>
-            <h6 className="card-text">Amount of Compost (lb):</h6>
+            <h6 className="card-text"><strong>Amount of Compost (lb):</strong></h6>
             <p className="card-text"> {compost.amountOfCompost}</p>
           </div>
         </div>

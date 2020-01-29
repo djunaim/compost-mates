@@ -110,7 +110,7 @@ class EditCompost extends React.Component {
       uid: authData.getUid(),
     };
     compostsData.updateCompost(compostId, updatedCompost)
-      .then((response) => {
+      .then(() => {
         const selectedFoods = foodWastesCheckboxes.filter((x) => x.isChecked);
         const notSelectedFoods = foodWastesCheckboxes.filter((x) => !x.isChecked);
         selectedFoods.forEach((selectedFood) => {
@@ -142,7 +142,7 @@ class EditCompost extends React.Component {
     return (
       <form className="EditCompost">
         <div className="form-group">
-          <label htmlFor="compost-name"> Name</label>
+          <label htmlFor="compost-name"><strong>Name</strong></label>
           <input
             input="text"
             className="form-control"
@@ -153,7 +153,7 @@ class EditCompost extends React.Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="compost-amount"> Amount of Compost</label>
+          <label htmlFor="compost-amount"><strong>Amount of Compost (lb)</strong></label>
           <input
             input="text"
             className="form-control"
@@ -164,7 +164,7 @@ class EditCompost extends React.Component {
           />
         </div>
         <div className="form-check" >
-          <label htmlFor="foodWaste">Food Waste Types</label>
+          <label htmlFor="foodWaste"><strong>Food Waste Types</strong></label>
           {
             foodWastesCheckboxes.map((foodWastesCheckbox) => <Checkboxes key={foodWastesCheckbox.id} foodWastesCheckbox={foodWastesCheckbox} handleCheckEvent={this.handleCheckEvent} />)
           }

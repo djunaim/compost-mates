@@ -25,7 +25,7 @@ class Home extends React.Component {
     const { foodWastes } = this.state;
     return (
       <div className="Home">
-        {/* <div className="parallax"></div> */}
+        <div className="parallax1"></div>
         <div className="carousel">
           <Carousel>
             <Carousel.Item>
@@ -51,18 +51,29 @@ class Home extends React.Component {
             </Carousel.Item>
           </Carousel>
         </div>
-        {/* <div className="parallax"></div> */}
+        <div className="parallax"></div>
         <div className="toCompost">
           <h3>To Compost</h3>
-          <img class="compostImage" src="https://images.unsplash.com/photo-1485277068030-a29993c5d5f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=2104&q=80" alt="dirt"/>
-          <div className="overlayCompost">
+          <img className="compostImage" src="https://images.unsplash.com/photo-1485277068030-a29993c5d5f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=2104&q=80" alt="dirt"/>
+          <div className="overlayCompost d-flex flex-wrap">
             {
-              foodWastes.map((foodWaste) => <p key={foodWaste.id}>{foodWaste.type}</p>)
+              foodWastes.map((foodWaste) => <p className="col-md-4" key={foodWaste.id}>{foodWaste.type}</p>)
             }
           </div>
         </div>
         <div className="parallax"></div>
-        <div className="notCompost">Not Compost</div>
+        <div className="notCompost">
+          <h3>Not Compost</h3>
+          <img className="trashImage" src="https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80" alt="trash logo" />
+          <div className="overlayNotcompost d-flex flex-wrap">
+            <p className="col-md-4">Plastic</p>
+            <p className="col-md-4">Expanded Foam</p>
+            <p className="col-md-4">Metal</p>
+            <p className="col-md-4">Aluminum Foil</p>
+            <p className="col-md-4">Animal or Human Waste</p>
+            <p className="col-md-4">Dryer Sheets</p>
+          </div>
+        </div>
         <div className="parallax"></div>
       </div>
     );
