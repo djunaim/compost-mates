@@ -9,7 +9,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $white;
+  background-color: rgba(0, 0, 0, 0);
+  height: 100%;
 }
 
 code {
