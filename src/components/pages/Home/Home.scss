@@ -1,6 +1,9 @@
-.carousel-inner .item img {
-  width: 60vh;
-  overflow: hidden;
+.Home {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.carousel img {
+  height: 90%;
 }
 
 .parallax {
@@ -30,7 +33,7 @@
   overflow: hidden;
   h3 {
     position: absolute;
-    left: 45%;
+    left: 40%;
     top: 50%;
     color: white;
   }
@@ -38,6 +41,7 @@
     width: 0;
     height: 55vh;
     position: absolute;
+    padding-top: 30px;
     background-color: black;
     opacity: 0;
     transition: .5s ease;
@@ -58,7 +62,7 @@
 .toCompost:hover .overlayCompost {
   width: 100%;
   left: 0;
-  opacity: 0.8;
+  opacity: 0.86;
 }
 
 .notCompost {
@@ -70,7 +74,7 @@
   overflow: hidden;
   h3 {
     position: absolute;
-    left: 45%;
+    left: 40%;
     top: 50%;
     color: white;
   }
@@ -78,6 +82,7 @@
     width: 0;
     height: 55vh;
     position: absolute;
+    padding-top: 30px;
     background-color: black;
     opacity: 0;
     transition: .5s ease;
@@ -98,6 +103,6 @@
 .notCompost:hover .overlayNotcompost {
   width: 100%;
   left: 0;
-  opacity: 0.8;
+  opacity: 0.86;
 }
 
