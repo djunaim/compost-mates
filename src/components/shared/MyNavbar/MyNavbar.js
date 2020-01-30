@@ -35,7 +35,7 @@ class MyNavbar extends React.Component {
             <Link className="nav-link" to="/compost/new">Add Compost</Link>
           </li>
           <li className="nav-item">
-            <button className="nav-link btn btn-danger" onClick={this.logMeOut}>Log Out</button>
+            <button className="nav-link btn btn-outline-dark logoutButton" onClick={this.logMeOut}>Log Out</button>
           </li>
         </ul>
         );
@@ -43,11 +43,8 @@ class MyNavbar extends React.Component {
 
       return (
         <ul className="navbar-nav ml-auto">
-          {/* <li className="nav-item">
-            <Link className="nav-link" to="/registration">Register</Link>
-          </li> */}
           <li className="nav-item">
-            <button className="nav-link btn btn-success" onClick={this.loginClickEvent}>Log In</button>
+            <button className="nav-link btn btn-outline-success loginButton" onClick={this.loginClickEvent}>Log In</button>
           </li>
         </ul>
       );
