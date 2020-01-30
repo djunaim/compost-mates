@@ -15,7 +15,7 @@ import CompostForm from '../components/pages/CompostForm/CompostForm';
 import EditCompost from '../components/pages/EditCompost/EditCompost';
 import Home from '../components/pages/Home/Home';
 import MyCompost from '../components/pages/MyCompost/MyCompost';
-import Registration from '../components/pages/Registration/Registration';
+import Welcome from '../components/pages/Welcome/Welcome';
 import SingleCompost from '../components/pages/SingleCompost/SingleCompost';
 
 import './App.scss';
@@ -26,7 +26,7 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
 };
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/registration', state: { from: props.location } }} />);
+  const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/welcome', state: { from: props.location } }} />);
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
@@ -59,7 +59,7 @@ class App extends React.Component {
           <MyNavbar path="/auth" authed={authed} />
           <Switch>
             <PrivateRoute path="/" exact component={Home} authed={authed} />
-            <PublicRoute path="/registration" exact component={Registration} authed={authed} />
+            <PublicRoute path="/welcome" exact component={Welcome} authed={authed} />
             <PrivateRoute path="/compost" exact component={MyCompost} authed={authed} />
             <PrivateRoute path="/compost/new" exact component={CompostForm} authed={authed} />
             <PrivateRoute path="/compost/:compostId" exact component={SingleCompost} authed={authed} />

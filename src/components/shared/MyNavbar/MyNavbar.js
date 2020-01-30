@@ -43,9 +43,9 @@ class MyNavbar extends React.Component {
 
       return (
         <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/registration">Register</Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <button className="nav-link btn btn-success" onClick={this.loginClickEvent}>Log In</button>
           </li>
