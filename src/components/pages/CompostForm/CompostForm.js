@@ -69,10 +69,8 @@ class CompostForm extends React.Component {
 
   saveCompostEvent = (e) => {
     e.preventDefault();
-    const { userId } = this.state.composts[0];
     const { foodWastesCheckboxes } = this.state;
     const newCompost = {
-      userId,
       amountOfCompost: this.state.compostAmount,
       name: this.state.compostName,
       uid: authData.getUid(),
