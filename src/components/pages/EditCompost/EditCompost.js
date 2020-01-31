@@ -102,11 +102,9 @@ class EditCompost extends React.Component {
 
   updateCompostEvent = (e) => {
     e.preventDefault();
-    const { userId } = this.state.composts[0];
     const { foodWastesCheckboxes, compostTypesArr } = this.state;
     const { compostId } = this.props.match.params;
     const updatedCompost = {
-      userId,
       amountOfCompost: this.state.compostAmount,
       name: this.state.compostName,
       uid: authData.getUid(),

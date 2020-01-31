@@ -26,3 +26,5 @@ package-lock.json
 
 src/helpers/apiKeys.json
 
+.firebase/
+
