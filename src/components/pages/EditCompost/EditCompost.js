@@ -115,7 +115,6 @@ class EditCompost extends React.Component {
         const notSelectedFoods = foodWastesCheckboxes.filter((x) => !x.isChecked);
         selectedFoods.forEach((selectedFood) => {
           if (compostTypesArr.find((c) => c.foodWasteId === selectedFood.id) === undefined) {
-            // have array compostTypesArr. compostTypesArr.find((c) => c.foodWasteId === selectedFood.id)
             const newCompostType = {
               foodWasteId: selectedFood.id,
               compostId,
