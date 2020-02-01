@@ -109,7 +109,7 @@ class CompostForm extends React.Component {
       <form className="CompostForm">
         <div className="container compostForm">
           <div className="form-group">
-            <label htmlFor="compost-image-url">Image URL</label>
+            <label htmlFor="compost-image-url"><strong>Image URL</strong></label>
             <input
               type="text"
               className="form-control"
