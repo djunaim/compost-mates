@@ -13,6 +13,7 @@ class CompostForm extends React.Component {
   state = {
     compostName: '',
     compostAmount: '',
+    compostImageURL: '',
     foodWastesCheckboxes: [],
     composts: [],
   }
@@ -67,10 +68,16 @@ class CompostForm extends React.Component {
     this.setState({ compostAmount: e.target.value });
   }
 
+  imageChange = (e) => {
+    e.preventDefault();
+    this.setState({ compostImageURL: e.target.value });
+  }
+
   saveCompostEvent = (e) => {
     e.preventDefault();
     const { foodWastesCheckboxes } = this.state;
     const newCompost = {
+      imgURL: this.state.compostImageURL,
       amountOfCompost: this.state.compostAmount,
       name: this.state.compostName,
       uid: authData.getUid(),
@@ -96,10 +103,22 @@ class CompostForm extends React.Component {
       compostAmount,
       compostName,
       foodWastesCheckboxes,
+      compostImageURL,
     } = this.state;
     return (
       <form className="CompostForm">
         <div className="container compostForm">
+          <div className="form-group">
+            <label htmlFor="compost-image-url">Image URL</label>
+            <input
+              type="text"
+              className="form-control"
+              id="compost-image-url"
+              placeholder="Enter image url"
+              value={compostImageURL}
+              onChange={this.imageChange}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="compost-name"><strong>Name</strong></label>
             <input

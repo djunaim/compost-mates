@@ -1,60 +1,72 @@
 {
   "compost1": {
+    "imgURL": "https://images.unsplash.com/photo-1555421935-75f56212e72d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "1.2",
     "name": "First Week",
     "uid": "12345"
   },
   "compost2": {
+    "imgURL": "https://images.unsplash.com/photo-1516711345667-ebafb3ebea12?ixlib=rb-1.2.1&auto=format&fit=crop&w=2104&q=80",
     "amountOfCompost": "1.4",
     "name": "Second Week",
     "uid": "12345"
   },
   "compost3": {
+    "imgURL": "https://images.unsplash.com/photo-1422919869950-5fdedb27cde8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "2",
     "name": "Third Week",
     "uid": "12345"
   },
   "compost4": {
+    "imgURL": "https://images.unsplash.com/photo-1533893057902-dbc94f18f01f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "1.6",
     "name": "Fourth Week",
     "uid": "12345"
   },
   "compost5": {
+    "imgURL": "https://images.unsplash.com/photo-1525539945450-1fd611e8caf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "1",
     "name": "First Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
   },
   "compost6": {
+    "imgURL": "https://images.unsplash.com/photo-1428196457394-f0c4aec5f574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "1.5",
     "name": "Second Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
   },
   "compost7": {
+    "imgURL": "https://images.unsplash.com/photo-1452948491233-ad8a1ed01085?ixlib=rb-1.2.1&auto=format&fit=crop&w=2106&q=80",
     "amountOfCompost": "2.5",
     "name": "Third Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
   },
   "compost8": {
+    "imgURL": "https://images.unsplash.com/photo-1501626325795-f415649fd44e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "2",
     "name": "Fourth Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
   },
   "compost9": {
+    "imgURL": "https://images.unsplash.com/photo-1552632196-9442133181d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80",
     "amountOfCompost": "1.2",
     "name": "Fifth Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
   },
   "compost10": {
+    "imgURL": "https://images.unsplash.com/photo-1564936281291-294551497d81?ixlib=rb-1.2.1&auto=format&fit=crop&w=1849&q=80",
     "amountOfCompost": "2",
     "name": "Sixth Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
   },
   "compost11": {
+    "imgURL": "https://images.unsplash.com/photo-1552901695-cfa7432e6bbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "3",
     "name": "Seventh Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
   },
   "compost12": {
+    "imgURL": "https://images.unsplash.com/photo-1523198205441-99fac53d157f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
     "amountOfCompost": "1",
     "name": "Eighth Compost",
     "uid": "Jq9Gqfx6acUuokv1Ze3vnNbNujs1"
