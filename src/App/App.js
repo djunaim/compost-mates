@@ -19,6 +19,7 @@ import Welcome from '../components/pages/Welcome/Welcome';
 import SingleCompost from '../components/pages/SingleCompost/SingleCompost';
 
 import './App.scss';
+import Footer from '../components/shared/Footer/Footer';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
@@ -65,6 +66,7 @@ class App extends React.Component {
             <PrivateRoute path="/compost/:compostId" exact component={SingleCompost} authed={authed} />
             <PrivateRoute path="/compost/:compostId/edit" exact component={EditCompost} authed={authed} />
           </Switch>
+          <Footer authed={authed} />
         </Router>
       </div>
     );
