@@ -26,6 +26,7 @@ class Compost extends React.Component {
         <div className="card border-dark mb-3 compostCard">
           <div className="card-body">
             <h4 className="card-title"><strong>{compost.name}</strong></h4>
+            <img src={compost.imgURL} className="card-img-top" alt="..."/>
             <div className="compostButtons">
               <Link className="btn btn-outline-dark" to={`/compost/${compost.id}`}>View</Link>
               <Link className="btn" to={`/compost/${compost.id}/edit`}><FontAwesomeIcon icon={faPen} /></Link>

@@ -15,6 +15,7 @@ class EditCompost extends React.Component {
   state = {
     compostName: '',
     compostAmount: '',
+    compostImageURL: '',
     foodWastesCheckboxes: [],
     composts: [],
     compostTypesArr: [],
@@ -30,7 +31,7 @@ class EditCompost extends React.Component {
     if (compostId) {
       compostsData.getSingleCompost(compostId)
         .then((response) => {
-          this.setState({ compostName: response.data.name, compostAmount: response.data.amountOfCompost });
+          this.setState({ compostName: response.data.name, compostAmount: response.data.amountOfCompost, compostImageURL: response.data.imgURL });
           compostTypesData.getSingleCompostTypeByCompostId(compostId).then((result) => {
             // this.setState({ compostTypeIds: result.data });
             const compostTypeObj = result.data;
@@ -100,11 +101,17 @@ class EditCompost extends React.Component {
     this.setState({ compostAmount: e.target.value });
   }
 
+  imageChange = (e) => {
+    e.preventDefault();
+    this.setState({ compostImageURL: e.target.value });
+  }
+
   updateCompostEvent = (e) => {
     e.preventDefault();
     const { foodWastesCheckboxes, compostTypesArr } = this.state;
     const { compostId } = this.props.match.params;
     const updatedCompost = {
+      imgURL: this.state.compostImageURL,
       amountOfCompost: this.state.compostAmount,
       name: this.state.compostName,
       uid: authData.getUid(),
@@ -137,10 +144,22 @@ class EditCompost extends React.Component {
       compostAmount,
       compostName,
       foodWastesCheckboxes,
+      compostImageURL,
     } = this.state;
     return (
       <form className="EditCompost">
         <div className="container editCompostForm">
+          <div className="form-group">
+            <label htmlFor="compost-image-url">Image URL</label>
+            <input
+              type="text"
+              className="form-control"
+              id="compost-image-url"
+              placeholder="Enter image url"
+              value={compostImageURL}
+              onChange={this.imageChange}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="compost-name"><strong>Name</strong></label>
             <input
