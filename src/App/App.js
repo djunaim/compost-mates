@@ -20,6 +20,7 @@ import SingleCompost from '../components/pages/SingleCompost/SingleCompost';
 
 import './App.scss';
 import Footer from '../components/shared/Footer/Footer';
+import Profile from '../components/pages/Profile/Profile';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />);
@@ -41,6 +42,7 @@ class App extends React.Component {
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        console.log('user uid', user.uid);
         this.setState({ authed: true });
       } else {
         this.setState({ authed: false });
@@ -61,6 +63,7 @@ class App extends React.Component {
           <Switch>
             <PrivateRoute path="/" exact component={Home} authed={authed} />
             <PublicRoute path="/welcome" exact component={Welcome} authed={authed} />
+            <PrivateRoute path="/profile" exact component={Profile} authed={authed} />
             <PrivateRoute path="/compost" exact component={MyCompost} authed={authed} />
             <PrivateRoute path="/compost/new" exact component={CompostForm} authed={authed} />
             <PrivateRoute path="/compost/:compostId" exact component={SingleCompost} authed={authed} />

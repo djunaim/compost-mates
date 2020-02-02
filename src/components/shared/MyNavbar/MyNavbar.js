@@ -5,11 +5,31 @@ import 'firebase/auth';
 import { Link } from 'react-router-dom';
 
 import './MyNavbar.scss';
+import authData from '../../../helpers/data/authData';
+import usersData from '../../../helpers/data/usersData';
 
 class MyNavbar extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
   }
+
+  componentDidMount() {
+    // const uid = authData.getUid();
+    usersData.getAllUsers()
+      .then((response) => {
+        console.log('response uid', response);
+      })
+      .catch((errFromLogin) => console.error(errFromLogin));
+  }
+
+  // checkUid = () => {
+  //   const user = firebase.auth().currentUser;
+  //   if (user !== null) {
+  //     user.providerData.forEach(() => {
+  //       console.log('uid', user.uid);
+  //     });
+  //   }
+  // }
 
   loginClickEvent = (e) => {
     e.preventDefault();
@@ -28,16 +48,19 @@ class MyNavbar extends React.Component {
       if (authed) {
         return (
           <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/compost">My Compost</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/compost/new">Add Compost</Link>
-          </li>
-          <li className="nav-item">
-            <button className="nav-link btn btn-outline-dark logoutButton" onClick={this.logMeOut}>Log Out</button>
-          </li>
-        </ul>
+            <li className="nav-item">
+              <Link className="nav-link" to="/profile">Profile</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/compost">My Compost</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/compost/new">Add Compost</Link>
+            </li>
+            <li className="nav-item">
+              <button className="nav-link btn btn-outline-dark logoutButton" onClick={this.logMeOut}>Log Out</button>
+            </li>
+          </ul>
         );
       }
 
