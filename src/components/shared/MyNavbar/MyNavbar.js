@@ -28,16 +28,16 @@ class MyNavbar extends React.Component {
       if (authed) {
         return (
           <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/compost">My Compost</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/compost/new">Add Compost</Link>
-          </li>
-          <li className="nav-item">
-            <button className="nav-link btn btn-outline-dark logoutButton" onClick={this.logMeOut}>Log Out</button>
-          </li>
-        </ul>
+            <li className="nav-item">
+              <Link className="nav-link" to="/compost">My Compost</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/compost/new">Add Compost</Link>
+            </li>
+            <li className="nav-item">
+              <button className="nav-link btn btn-outline-dark logoutButton" onClick={this.logMeOut}>Log Out</button>
+            </li>
+          </ul>
         );
       }
 
