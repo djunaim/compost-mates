@@ -42,7 +42,6 @@ class App extends React.Component {
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log('user uid', user.uid);
         this.setState({ authed: true });
       } else {
         this.setState({ authed: false });
