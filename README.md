@@ -14,11 +14,20 @@ Welcome to Compost Mates. Learn which food wastes can be composted and what cann
 * React Bootstrap
 
 ## Screenshots
-![auth paeg]()
-![home page]()
-![my composts]()
-![single compost]()
-![compost form]()
+Auth Page
+![auth page](https://raw.githubusercontent.com/djunaim/compost-mates/master/src/screenshots/auth.PNG)
+Home Carousel
+![home carousel](https://raw.githubusercontent.com/djunaim/compost-mates/master/src/screenshots/homeCarousel.PNG)
+Compostable List 
+![home compostable](https://raw.githubusercontent.com/djunaim/compost-mates/master/src/screenshots/homeCompostable.PNG)
+NonCompostable List
+![home noncompost](https://raw.githubusercontent.com/djunaim/compost-mates/master/src/screenshots/homenonCompost.PNG)
+My Compost Page
+![my composts](https://raw.githubusercontent.com/djunaim/compost-mates/master/src/screenshots/myCompost.PNG)
+Single Compost View
+![single compost](https://raw.githubusercontent.com/djunaim/compost-mates/master/src/screenshots/singleCompost.PNG)
+Compost Form
+![compost form](https://raw.githubusercontent.com/djunaim/compost-mates/master/src/screenshots/compostForm.PNG)
 
 ## Run this Project
 * Clone down project from Github
